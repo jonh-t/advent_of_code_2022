@@ -4,25 +4,11 @@ def read_input(f):
 
 
 def split_in_half(s):
-    return s[0 : int(len(s) / 2)], s[int(len(s) / 2) : len(s)]
+    return set(s[0 : int(len(s) / 2)]), set(s[int(len(s) / 2) : len(s)])
 
 
 def find_matches(s1, s2):
-    chars = {}
-    for s in s1:
-        chars[s] = {1}
-
-    for s in s2:
-        if s in chars.keys():
-            chars[s].add(2)
-        else:
-            chars[s] = {2}
-
-    matches = []
-    for k in chars:
-        if len(chars[k]) > 1:
-            matches.append(k)
-
+    matches = s1.intersection(s2)
     return matches
 
 
